@@ -1,0 +1,16 @@
+@import "../../palette/palette.css";
+.body-container {
+  background-image: url("../../pages/itemlistcontainer/img/tremendo-background.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: bottom;
+  background-position-x: right;
+  background-color: var(--firstia);
+  min-height: 80vh;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

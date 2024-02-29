@@ -3,19 +3,22 @@ import { Cart } from "../../common/cart/Cart";
 import logo from "./assets/pokeball-logo.svg";
 import "./Navbar.css";
 import "animate.css";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
     <nav className="navbar">
       <Grid className="navbar-top-half" container>
         <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
-          <a className="logo-anchor" href="">
-            <img
-              className="logo animate__animated animate__fadeInTopLeft animate__slow"
-              src={logo}
-              alt="Logo Pokeball"
-            />
-          </a>
+          <Link to={"/"}>
+            <div className="logo-anchor">
+              <img
+                className="logo animate__animated animate__fadeInTopLeft animate__slow"
+                src={logo}
+                alt="Logo Pokeball"
+              />
+            </div>
+          </Link>
         </Grid>
 
         <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>

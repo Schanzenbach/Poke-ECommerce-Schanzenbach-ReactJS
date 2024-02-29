@@ -31,7 +31,7 @@ export let products = [
 
   {
     id: 4,
-    name: "Lapras Plushie",
+    name: "Psyduck Plushie",
     size: "22''",
     category: "plushie",
     description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
@@ -39,3 +39,22 @@ export let products = [
     img: "src/components/common/productcard/img/psyduck-plushie-background.png",
   },
 ];
+
+//Función que me busca en el array de productos uno cuyo product.id sea el mismo que el id que le paso por argumento
+export const getProduct = (id) => {
+  return new Promise((resolve, reject) => {
+    if (products.length > 0) {
+      const item = products.find((product) => product.id === id);
+      //Voy a simular que demora con un setTimeOut
+      setTimeout(() => {
+        if (item) {
+          resolve(item);
+        } else {
+          reject(`No se encuentra el producto de id ${id}`);
+        }
+      }, 2000);
+    } else {
+      reject("No hay productos");
+    }
+  });
+};
