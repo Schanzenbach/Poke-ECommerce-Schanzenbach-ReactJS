@@ -3,7 +3,6 @@ import "./ItemList.css";
 import React from "react";
 
 export const ItemList = ({ items }) => {
-  console.log(items);
   return (
     <div className="caja">
       {items.map(({ id, name, price, img }) => {

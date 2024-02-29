@@ -40,9 +40,12 @@ export const Navbar = () => {
         </Grid>
       </Grid>
       <Grid className="navbar-bottom-half" container>
-        <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
-          PLUSHIES
-        </Grid>
+        <Link to={`/plushies`}>
+          <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
+            PLUSHIES
+          </Grid>
+        </Link>
+
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           ROPA
         </Grid>
