@@ -1,3 +1,7 @@
+a {
+  min-height: 0;
+  text-decoration: none;
+}
 a:visited {
   color: white;
 }

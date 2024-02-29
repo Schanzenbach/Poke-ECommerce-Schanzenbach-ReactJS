@@ -14,20 +14,14 @@
   border-bottom: 2px solid var(--secondil-dark);
 }
 .navbar-boxes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .logo {
   width: 60px;
 }
-.logo-anchor {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 @keyframes rotate {
   0% {
     transform: rotateZ(0deg);

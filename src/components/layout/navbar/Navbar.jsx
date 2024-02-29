@@ -10,14 +10,12 @@ export const Navbar = () => {
     <nav className="navbar">
       <Grid className="navbar-top-half" container>
         <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
-          <Link to={"/"}>
-            <div className="logo-anchor">
-              <img
-                className="logo animate__animated animate__fadeInTopLeft animate__slow"
-                src={logo}
-                alt="Logo Pokeball"
-              />
-            </div>
+          <Link to="/">
+            <img
+              className="logo animate__animated animate__fadeInTopLeft animate__slow"
+              src={logo}
+              alt="Logo Pokeball"
+            />
           </Link>
         </Grid>
 
@@ -40,11 +38,9 @@ export const Navbar = () => {
         </Grid>
       </Grid>
       <Grid className="navbar-bottom-half" container>
-        <Link to={`/plushies`}>
-          <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
-            PLUSHIES
-          </Grid>
-        </Link>
+        <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
+          <Link to="/plushies">PLUSHIES</Link>
+        </Grid>
 
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           ROPA
