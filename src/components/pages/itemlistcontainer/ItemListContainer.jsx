@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
 import { getProducts } from "../../../productsMock.js";
 import { useParams } from "react-router-dom";
+import { dataBase } from "../../../firebaseConfig.js";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export const ItemListContainer = () => {
   const { category } = useParams();
@@ -9,22 +11,29 @@ export const ItemListContainer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getProducts()
+    setIsLoading(true);
+
+    let productsCollection = collection(dataBase, "products");
+
+    let consulta;
+    if (category) {
+      let filteredByCategoryProd = query(
+        productsCollection,
+        where("category", "==", category)
+      );
+      consulta = filteredByCategoryProd;
+    } else {
+      consulta = productsCollection;
+    }
+
+    getDocs(consulta)
       .then((response) => {
-        if (category) {
-          const filteredProducts = response.filter(
-            (p) => p.category == category
-          );
-          setItems(filteredProducts);
-        } else {
-          setItems(response);
-        }
-        setIsLoading(false);
+        let productsArray = response.docs.map((e) => {
+          return { ...e.data(), id: e.id };
+        });
+        setItems(productsArray);
       })
-      .catch((error) => {
-        console.log("error: ", error);
-        setIsLoading(false);
-      });
+      .finally(setIsLoading(false));
   }, [category]);
 
   return (
