@@ -1,6 +1,6 @@
 @import "../../palette/palette.css";
 .body-container {
-  background-image: url("../../pages/itemlistcontainer/img/tremendo-background.png");
+  background-image: url("../../pages/itemlistcontainer/img/background-image.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position-y: bottom;

@@ -1,22 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
-import { products } from "../../../productsMock.js";
+import { getProducts } from "../../../productsMock.js";
+import { useParams } from "react-router-dom";
 
 export const ItemListContainer = () => {
+  const { category } = useParams();
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const dataFetch = new Promise((resolve, reject) => {
-      resolve(products);
-    }); //Acá fetcheo mi propia base con una promesa resuelta por mi xd
-    dataFetch //Acá eso que me traje lo manipulo
+    getProducts()
       .then((response) => {
-        setItems(response); //Si hay éxito en la promesa tomo el response y lo meto en items
+        if (category) {
+          const filteredProducts = response.filter(
+            (p) => p.category == category
+          );
+          setItems(filteredProducts);
+        } else {
+          setItems(response);
+        }
+        setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("error: ", error);
+        setIsLoading(false);
       });
-  }, []);
+  }, [category]);
 
-  return <ItemList items={items} />;
+  return (
+    <>
+      {isLoading ? (
+        <img src="/gif/loading.gif" alt="Cargando..." />
+      ) : (
+        <ItemList items={items} />
+      )}
+    </>
+  );
 };

@@ -1,15 +1,52 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
 import { getProduct } from "../../../productsMock";
+import { CartContext } from "../../../context/CartContext";
 
 export const ItemDetailContainer = () => {
+  //El useParams toma la id que le mando por url al navegador, la cual es mandada ahí por el React Router
   const { id } = useParams();
   const [item, setItem] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { onAddToCart, getQuantityById } = useContext(CartContext);
   useEffect(() => {
     //nuestro getProduct recibe como argumento el id que tengo del useParams
-    getProduct(parseInt(id)).then((response) => setItem(response));
-  }, []);
-  return <>{item && <ItemDetail item={item} />}</>;
+    getProduct(parseInt(id))
+      .then((response) => {
+        setItem(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+        setIsLoading(false);
+      });
+  }, [id]);
+  /*Función para agregar cantidad al carrito. Esta función  y me devuelve
+  un logeo de la información del item cuyo detalle se está viendo + una nueva propiedad
+  llamada quantity que entra por parámetro al llamar a la función. La pasamosal itemDetail*/
+  const addToCart = (quantity = 0) => {
+    let itemInfo = {
+      ...item,
+      quantity,
+    };
+    onAddToCart(itemInfo);
+  };
+
+  const alreadyQuantityInCart = getQuantityById(parseInt(id)); //Del useParams viene como un
+  //string con un + lo hago int
+  return (
+    <>
+      {isLoading ? (
+        <img src="/gif/loadingPBall.gif" alt="Cargando..." />
+      ) : (
+        <ItemDetail
+          item={item}
+          addToCart={addToCart}
+          initialValue={alreadyQuantityInCart}
+        />
+      )}
+    </>
+  );
   //Renderizado condicional. si hay algo guardado en item renderiza
 };

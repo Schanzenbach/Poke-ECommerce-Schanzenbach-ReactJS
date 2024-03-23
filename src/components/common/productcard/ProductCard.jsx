@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export const ProductCard = ({ name, price, img, id }) => {
   return (
     <Card raised={true} className={"contenedor-de-carta"}>
-      <Link to={`item/${id}`}>
+      <Link to={`/item/${id}`}>
         <CardMedia
           className={"card-img"}
           sx={{ borderRadius: "1rem" }}
@@ -30,7 +30,7 @@ export const ProductCard = ({ name, price, img, id }) => {
         <Typography component={"span"}>${price}</Typography>
       </CardContent>
       <CardActions className={"btn-container"}>
-        <Link to={`item/${id}`} className="link-btn">
+        <Link to={`/item/${id}`} className="link-btn">
           <Button
             fullWidth={true}
             variant="outlined"

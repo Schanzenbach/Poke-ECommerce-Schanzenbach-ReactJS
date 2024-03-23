@@ -5,17 +5,18 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import "./ItemDetail.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CounterContainer } from "../../common/counter/CounterContainer";
 
-export const ItemDetail = ({ item }) => {
-  console.log(item.img);
+export const ItemDetail = ({ item, addToCart, initialValue }) => {
   return (
     <div>
-      <Card>
+      <Card className={"item-detail-container"}>
         <CardMedia
           sx={{ borderRadius: "1rem" }}
           component="img"
-          height="400"
+          height="450"
           image={item.img}
           alt={item.name}
         />
@@ -24,9 +25,13 @@ export const ItemDetail = ({ item }) => {
           <Typography variant="h5">${item.price}</Typography>
         </CardContent>
         <CardActions>
-          <button>-</button>
-          <p>cantidad</p>
-          <button>+</button>
+          <CounterContainer
+            addToCart={addToCart}
+            stock={item.stock}
+            initialValue={initialValue}
+          />
+          {/* de acá le paso a la lógica del contador la función que se va a disparar y el stock del item
+          para chequear si tengo cuando agrego al carrito */}
         </CardActions>
       </Card>
     </div>

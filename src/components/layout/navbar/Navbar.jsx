@@ -39,14 +39,14 @@ export const Navbar = () => {
       </Grid>
       <Grid className="navbar-bottom-half" container>
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
-          <Link to="/plushies">PLUSHIES</Link>
+          <Link to="/category/plushies">PLUSHIES</Link>
         </Grid>
 
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
-          ROPA
+          <Link to="/category/clothes">ROPA</Link>
         </Grid>
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
-          HOGAR
+          <Link to="/category/home">HOGAR</Link>
         </Grid>
       </Grid>
     </nav>
