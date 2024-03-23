@@ -3,25 +3,29 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
 import { getProduct } from "../../../productsMock";
 import { CartContext } from "../../../context/CartContext";
+import { dataBase } from "../../../firebaseConfig";
+import { collection, doc, getDoc } from "firebase/firestore";
 
 export const ItemDetailContainer = () => {
   //El useParams toma la id que le mando por url al navegador, la cual es mandada ahí por el React Router
   const { id } = useParams();
-  const [item, setItem] = useState(null);
+
+  const [item, setItem] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
   const { onAddToCart, getQuantityById } = useContext(CartContext);
+
   useEffect(() => {
-    //nuestro getProduct recibe como argumento el id que tengo del useParams
-    getProduct(parseInt(id))
+    setIsLoading(true);
+    let productsCollection = collection(dataBase, "products");
+    let refDoc = doc(productsCollection, id);
+    getDoc(refDoc)
       .then((response) => {
-        setItem(response);
-        setIsLoading(false);
+        setItem({ ...response.data(), id: response.id });
       })
-      .catch((error) => {
-        console.log("Error: ", error);
-        setIsLoading(false);
-      });
+      .finally(setIsLoading(false));
   }, [id]);
+
   /*Función para agregar cantidad al carrito. Esta función  y me devuelve
   un logeo de la información del item cuyo detalle se está viendo + una nueva propiedad
   llamada quantity que entra por parámetro al llamar a la función. La pasamosal itemDetail*/
@@ -33,8 +37,8 @@ export const ItemDetailContainer = () => {
     onAddToCart(itemInfo);
   };
 
-  const alreadyQuantityInCart = getQuantityById(parseInt(id)); //Del useParams viene como un
-  //string con un + lo hago int
+  const alreadyQuantityInCart = getQuantityById(id); //Del useParams viene como un
+  //string con un + lo hago int YA NO MÁS PORQUE AHORA ES UN STRING XD
   return (
     <>
       {isLoading ? (

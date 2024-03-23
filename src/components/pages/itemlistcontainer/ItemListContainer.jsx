@@ -14,16 +14,14 @@ export const ItemListContainer = () => {
     setIsLoading(true);
 
     let productsCollection = collection(dataBase, "products");
+    let consulta = productsCollection;
 
-    let consulta;
     if (category) {
       let filteredByCategoryProd = query(
         productsCollection,
         where("category", "==", category)
       );
       consulta = filteredByCategoryProd;
-    } else {
-      consulta = productsCollection;
     }
 
     getDocs(consulta)
