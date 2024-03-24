@@ -1,6 +1,6 @@
 @import "../../palette/palette.css";
 .caja {
-  background-image: url("./img/tremendo-background.png");
+  background-image: url("/img/tremendo-background.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position-y: bottom;

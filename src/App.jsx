@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ItemListContainer } from "./components/pages/itemlistcontainer/ItemListContainer";
-import { Home } from "./components/pages/home/Home";
 import { ItemDetailContainer } from "./components/pages/itemdetail/ItemDetailContainer";
 import { Layout } from "./components/layout/Layout";
 import { CartView } from "./components/pages/cartview/CartView";

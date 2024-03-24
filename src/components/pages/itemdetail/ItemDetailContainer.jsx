@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { ItemDetail } from "./ItemDetail";
-import { getProduct } from "../../../productsMock";
 import { CartContext } from "../../../context/CartContext";
 import { dataBase } from "../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";

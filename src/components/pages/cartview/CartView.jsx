@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
 
 export const CartView = () => {
-  const { cart, clearCart, removeById } = useContext(CartContext);
+  const { cart, clearCart, removeById, totalCartPrice } =
+    useContext(CartContext);
+  const total = totalCartPrice();
   return (
     <div>
       {cart.map((p) => (
@@ -14,6 +16,7 @@ export const CartView = () => {
           <button onClick={() => removeById(p.id)}>X</button>
         </div>
       ))}
+      <h2>TOTAL: $ {total}</h2>
       <button onClick={clearCart}>Vaciar Carrito</button>
       <button>
         <Link to={"/checkout"}>Finalizar la compra.</Link>

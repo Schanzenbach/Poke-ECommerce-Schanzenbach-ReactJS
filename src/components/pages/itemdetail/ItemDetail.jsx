@@ -11,7 +11,7 @@ import { CounterContainer } from "../../common/counter/CounterContainer";
 
 export const ItemDetail = ({ item, addToCart, initialValue }) => {
   return (
-    <div>
+    <div className="body-container">
       <Card className={"item-detail-container"}>
         <CardMedia
           sx={{ borderRadius: "1rem" }}
