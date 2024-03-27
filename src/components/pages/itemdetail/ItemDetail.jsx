@@ -21,7 +21,9 @@ export const ItemDetail = ({ item, addToCart, initialValue }) => {
           alt={item.name}
         />
         <CardContent>
-          <Typography variant="h3">{item.name}</Typography>
+          <Typography variant="h3" noWrap>
+            {item.name}
+          </Typography>
           <Typography variant="h5">${item.price}</Typography>
         </CardContent>
         <CardActions>
