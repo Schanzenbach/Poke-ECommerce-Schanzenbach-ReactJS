@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 export const FilterInputContext = createContext();
 export const FilterInputContextProvider = ({ children }) => {
   const [productsName, setProductsName] = useState("");
-  console.log(productsName);
   const captureProducts = (event) => {
     event.preventDefault();
     setProductsName(event.target.value.toLowerCase());

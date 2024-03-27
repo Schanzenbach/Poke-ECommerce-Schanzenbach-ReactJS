@@ -33,7 +33,6 @@ export const ItemListContainer = () => {
           setItems(filteredArray);
         })
         .finally(setIsLoading(false));
-      console.log;
     } else if (category) {
       let filteredByCategoryProd = query(
         productsCollection,
