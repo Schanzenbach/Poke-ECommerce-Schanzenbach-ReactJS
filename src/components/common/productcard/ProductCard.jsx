@@ -24,7 +24,7 @@ export const ProductCard = ({ name, price, img, id }) => {
         />
       </Link>
       <CardContent>
-        <Typography variant="h6" align="center">
+        <Typography variant="h6" align="center" noWrap>
           {name}
         </Typography>
         <Typography component={"span"}>${price}</Typography>
