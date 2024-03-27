@@ -5,7 +5,8 @@ import { CartContext } from "../../../context/CartContext";
 export const CartView = () => {
   const { cart, clearCart, removeById, totalCartPrice } =
     useContext(CartContext);
-  const total = totalCartPrice();
+  const total = totalCartPrice().toFixed(2);
+
   return (
     <div>
       {cart.map((p) => (
@@ -17,10 +18,19 @@ export const CartView = () => {
         </div>
       ))}
       <h2>TOTAL: $ {total}</h2>
-      <button onClick={clearCart}>Vaciar Carrito</button>
-      <button>
-        <Link to={"/checkout"}>Finalizar la compra.</Link>
-      </button>
+
+      {cart.length > 0 ? (
+        <>
+          <button onClick={clearCart}>Vaciar Carrito</button>
+          <button>
+            <Link to={"/checkout"}>Finalizar la compra.</Link>
+          </button>
+        </>
+      ) : (
+        <button className="cart-view-btn" disabled>
+          Finalizar la compra.
+        </button>
+      )}
     </div>
   );
 };

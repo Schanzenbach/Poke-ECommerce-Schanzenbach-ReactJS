@@ -16,7 +16,7 @@ export const ItemDetail = ({ item, addToCart, initialValue }) => {
         <CardMedia
           sx={{ borderRadius: "1rem" }}
           component="img"
-          height="450"
+          height="422.5"
           image={item.img}
           alt={item.name}
         />
