@@ -1,0 +1,61 @@
+@import "../../palette/palette.css";
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+.filter-box {
+  position: relative;
+  background-color: var(--firstia-dark);
+  min-height: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3rem;
+  overflow: hidden;
+}
+.filter-box::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(
+    to right,
+    var(--secondil-dark),
+    var(--secondil),
+    var(--secondil-light)
+  );
+  height: 50%;
+  width: 100%;
+  /*el nombre, lo que tarda en terminar o lo que dura, la transición de un ciclo completo
+      al siguiente, lo que tarda en empezar desde el inicio de la página, y las veces que 
+      quiero que loopee*/
+  animation: rotate 5s ease 1.5s infinite;
+}
+.filter-box::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(
+    to right,
+    var(--secondil-dark),
+    var(--secondil),
+    var(--secondil-light)
+  );
+  height: 50%;
+  width: 100%;
+  animation: rotate 6s ease-in-out 1.5s infinite;
+}
+.filter-input {
+  position: absolute;
+  width: 96%;
+  min-height: 92%;
+  border-radius: 2rem;
+  z-index: 1;
+  border: none;
+}
+.filter-input:focus {
+  outline: none;
+}

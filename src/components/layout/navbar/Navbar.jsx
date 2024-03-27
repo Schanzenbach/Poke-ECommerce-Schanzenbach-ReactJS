@@ -4,6 +4,7 @@ import logo from "./assets/pokeball-logo.svg";
 import "./Navbar.css";
 import "animate.css";
 import { Link } from "react-router-dom";
+import { FilterInputContainer } from "../../common/filterinput/FilterInputContainer";
 
 export const Navbar = () => {
   return (
@@ -20,13 +21,7 @@ export const Navbar = () => {
         </Grid>
 
         <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
-          <div className="filter-box">
-            <input
-              className="filter-input"
-              type="text"
-              placeholder="Ej.:Lapras"
-            />
-          </div>
+          <FilterInputContainer />
         </Grid>
 
         <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
