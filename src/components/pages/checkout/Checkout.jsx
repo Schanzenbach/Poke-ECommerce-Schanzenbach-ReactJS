@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Checkout = ({ submitForm, captureUser, orderId }) => {
   return (
     <>
