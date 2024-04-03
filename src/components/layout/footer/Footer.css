@@ -1,0 +1,17 @@
+@import "../../palette/palette.css";
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--firstia-dark);
+  color: var(--thirdrema);
+  height: 5vh;
+  padding: 0 20px;
+  position: sticky;
+  bottom: 0;
+}
+
+.footer-container div {
+  display: flex;
+  align-items: center;
+}

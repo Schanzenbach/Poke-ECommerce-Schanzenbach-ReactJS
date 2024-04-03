@@ -7,6 +7,9 @@
   margin: 0;
   padding: 0;
   color: var(--thirdrema);
+  position: sticky;
+  top: 0; /* Align the footer to the bottom of the viewport */
+  z-index: 999;
 }
 .navbar-top-half,
 .navbar-bottom-half {

@@ -24,7 +24,7 @@ function App() {
                 <Route path="/item/:id" element={<ItemDetailContainer />} />
                 <Route path="/cart" element={<CartView />} />
                 <Route path="/checkout" element={<CheckoutContainer />} />
-                <Route path="*" element={<h1>404 página no encontrada</h1>} />
+                <Route path="/*" element={<h1>404 página no encontrada</h1>} />
               </Route>
             </Routes>
           </FilterInputContextProvider>

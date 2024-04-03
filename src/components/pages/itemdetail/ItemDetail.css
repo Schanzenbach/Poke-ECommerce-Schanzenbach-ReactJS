@@ -1,18 +1,29 @@
 @import "../../palette/palette.css";
 .body-container {
+  margin: 0;
+  padding: 0;
   background-image: url("/img/background-image.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 30%;
   background-position-y: bottom;
   background-position-x: right;
   background-color: var(--firstia);
-  max-height: 80vh;
-  width: 100%;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center; */
+  min-height: 75vh;
+  /* width: 100%; */
+  align-items: center;
 }
-.item-detail-container {
-  max-width: 450px;
+
+.card {
+  background: linear-gradient(
+    to right bottom,
+    var(--firstia-light-transparent),
+    var(--firstia-transparent),
+    var(--firstia-dark-transparent)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--thirdrema-light);
+  border-left: 1px solid var(--thirdrema-light);
+  border-radius: 1rem !important;
+  color: var(--thirdrema) !important;
 }

@@ -2,15 +2,74 @@
 .caja {
   background-image: url("/img/tremendo-background.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 65%;
+  background-attachment: fixed;
   background-position-y: bottom;
   background-position-x: right;
   background-color: var(--firstia);
-  min-height: 80vh;
-  height: 100%;
+  min-height: 75vh;
+  height: 75%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 1200px) {
+  /* Adjust layout for mobile devices */
+  .caja {
+    background-image: url("/img/tremendo-background.png");
+    background-repeat: no-repeat;
+    background-size: 65%;
+    background-attachment: fixed;
+    background-position-y: center;
+    background-position-x: right;
+    background-color: var(--firstia);
+    min-height: 75vh;
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+  /* Adjust layout for mobile devices */
+  .caja {
+    background-image: url("/img/tremendo-background.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-attachment: fixed;
+    background-position-y: 50%;
+    background-position-x: 50%;
+    background-color: var(--firstia);
+    min-height: 75vh;
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 426px) {
+  /* Adjust layout for mobile devices */
+  .caja {
+    background-image: url("/img/tremendo-background.png");
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-attachment: fixed;
+    background-position-y: 80%;
+    background-position-x: 70%;
+    background-color: var(--firstia);
+    min-height: 75vh;
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
 }
