@@ -41,21 +41,30 @@ export const CartView = () => {
               height: { sm: " 25vh", lg: "27.5vh" },
             }}
           >
-            <CardMedia
+            <Link
+              to={`/item/${p.id}`}
+              className="img-link"
               sx={{
                 borderRadius: "1rem",
                 width: { sm: "30%", md: "25%", lg: "30%" },
               }}
-              component="img"
-              image={p.img}
-              alt={p.name}
-            />
+            >
+              <CardMedia
+                sx={{
+                  borderRadius: "1rem",
+                  width: { sm: "100%" },
+                }}
+                component="img"
+                image={p.img}
+                alt={p.name}
+              />
+            </Link>
             <CardContent
               sx={{
                 display: { sm: "flex" },
                 flexDirection: { sm: "column" },
                 justifyContent: { sm: "center" },
-                width: { sm: "70%", md: "75%", lg: "70%" },
+                minWidth: { sm: "70%", md: "75%", lg: "70%" },
               }}
             >
               <Typography

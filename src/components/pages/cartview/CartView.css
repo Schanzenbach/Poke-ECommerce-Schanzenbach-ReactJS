@@ -6,6 +6,7 @@
   background-image: url("https://res.cloudinary.com/dxt6aalyt/image/upload/v1709689943/PokeProject/d6gsh1o3fyw7wibfsucr.png");
   background-repeat: no-repeat;
   background-size: contain;
+  background-attachment: fixed;
   background-position-y: bottom;
   background-position-x: right;
 }
