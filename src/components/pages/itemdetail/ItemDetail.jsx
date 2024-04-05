@@ -5,34 +5,6 @@ import { CounterContainer } from "../../common/counter/CounterContainer";
 
 export const ItemDetail = ({ item, addToCart, initialValue }) => {
   return (
-    // <Grid className="body-container" container>
-    //   <Grid item className="img-container" xs={12} sm={6} md={6} lg={4}>
-    //     <CardMedia
-    //       sx={{ borderRadius: "1rem" }}
-    //       component="img"
-    //       height="400"
-    //       image={item.img}
-    //       alt={item.name}
-    //     />
-    //   </Grid>
-    //   <Grid item className="details-container" xs={12} sm={6} md={6} lg={8}>
-    //     <h1>{item.name}</h1>
-    //     <h3>${item.price}</h3>
-    //     <h4>STOCK: {item.stock}</h4>
-    //     <div className="counter-container">
-    //       <CounterContainer
-    //         className="item-counter"
-    //         addToCart={addToCart}
-    //         stock={item.stock}
-    //         initialValue={initialValue}
-    //       />
-    //     </div>
-    //   </Grid>
-
-    //   {/* de acá le paso a la lógica del contador la función que se va a disparar y el stock del item
-    //       para chequear si tengo cuando agrego al carrito */}
-    // </Grid>
-
     <Grid className="body-container" container>
       <Grid item xs={12}>
         <Card
@@ -43,11 +15,19 @@ export const ItemDetail = ({ item, addToCart, initialValue }) => {
             alignItems: { lg: "center" },
           }}
         >
-          <Grid xs={12} sm={12} md={6} lg={6}>
+          <Grid
+            xs={12}
+            sm={12}
+            md={6}
+            sx={{ marginLeft: { md: "25%", lg: "0" } }}
+            lg={6}
+          >
             <CardMedia
               className="detail-img"
               component="img"
-              sx={{ height: { xs: "320", sm: "400", md: "400" } }}
+              sx={{
+                height: { xs: "320", sm: "400", md: "400" },
+              }}
               image={item.img}
               alt={item.name}
             />
@@ -56,10 +36,10 @@ export const ItemDetail = ({ item, addToCart, initialValue }) => {
             <Typography gutterBottom variant="h5" component="div">
               {item.name}
             </Typography>
-            <Typography variant="h4" color="text.secondary">
+            <Typography variant="h4" className="price-stock">
               ${item.price}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" className="price-stock">
               STOCK: {item.stock}
             </Typography>
             <CounterContainer

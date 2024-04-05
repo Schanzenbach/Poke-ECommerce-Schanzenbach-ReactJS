@@ -1,0 +1,57 @@
+@import url("../../palette/palette.css");
+.cart-body-container {
+  min-height: 75vh;
+  background-color: var(--firstia);
+  padding: 5px;
+  background-image: url("https://res.cloudinary.com/dxt6aalyt/image/upload/v1709689943/PokeProject/d6gsh1o3fyw7wibfsucr.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: bottom;
+  background-position-x: right;
+}
+
+.cart-p-card {
+  background: linear-gradient(
+    to right bottom,
+    var(--firstia-light-transparent),
+    var(--firstia-transparent),
+    var(--firstia-dark-transparent)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--thirdrema-light);
+  border-left: 1px solid var(--thirdrema-light);
+  border-radius: 1rem !important;
+  color: var(--thirdrema) !important;
+}
+
+.cart-end-btn {
+  color: var(--thirdrema) !important;
+  border-color: var(--secondil-dark) !important;
+  background-color: var(--firstia-dark) !important;
+  margin-bottom: 10px !important;
+}
+
+.checkout-link:visited {
+  color: var(--thirdrema) !important;
+}
+
+.cart-total-amount {
+  color: var(--thirdrema);
+}
+
+.cartview-btn-container,
+.cart-not-found {
+  background: linear-gradient(
+    to right bottom,
+    var(--firstia-light-transparent),
+    var(--firstia-transparent),
+    var(--firstia-dark-transparent)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--thirdrema-light);
+  border-left: 1px solid var(--thirdrema-light);
+  border-radius: 1rem !important;
+  padding: 5px;
+}

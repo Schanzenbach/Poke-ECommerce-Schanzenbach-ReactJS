@@ -9,10 +9,13 @@
   background-position-x: right;
   background-color: var(--firstia);
   min-height: 75vh;
-  /* width: 100%; */
-  align-items: center;
 }
 
+.card-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .card {
   background: linear-gradient(
     to right bottom,
@@ -26,4 +29,8 @@
   border-left: 1px solid var(--thirdrema-light);
   border-radius: 1rem !important;
   color: var(--thirdrema) !important;
+  margin: 15px;
+}
+.price-stock {
+  color: var(--firstia-dark);
 }

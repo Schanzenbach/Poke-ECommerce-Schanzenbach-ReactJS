@@ -1,6 +1,17 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
+import { IoBagCheckOutline } from "react-icons/io5";
+import "../../palette/palette.css";
+import "./CartView.css";
+import {
+  Card,
+  Typography,
+  CardContent,
+  Button,
+  CardMedia,
+  Grid,
+} from "@mui/material";
 
 export const CartView = () => {
   const { cart, clearCart, removeById, totalCartPrice } =
@@ -8,29 +19,150 @@ export const CartView = () => {
   const total = totalCartPrice().toFixed(2);
 
   return (
-    <div>
-      {cart.map((p) => (
-        <div key={p.id}>
-          <h2>{p.name}</h2>
-          <h4>Precio unitario: {p.price}</h4>
-          <h4>Cantidad: {p.quantity}</h4>
-          <button onClick={() => removeById(p.id)}>X</button>
-        </div>
-      ))}
-      <h2>TOTAL: $ {total}</h2>
+    <Grid
+      container
+      className="cart-body-container"
+      sx={{ flexDirection: { xs: "column", lg: "row" } }}
+    >
+      <Grid item xs={12} lg={6}>
+        {cart.map((p) => (
+          <Card
+            className="cart-p-card"
+            key={p.id}
+            sx={{
+              margin: {
+                xs: "0 5% 5% 5%",
+                sm: "0 5% 5% 5%",
+                lg: "0 1% 1% 1%",
+              },
+              width: { xs: "90%", sm: "90%", lg: "100%" },
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row", lg: "row" },
+              height: { sm: " 25vh", lg: "27.5vh" },
+            }}
+          >
+            <CardMedia
+              sx={{
+                borderRadius: "1rem",
+                width: { sm: "30%", md: "25%", lg: "30%" },
+              }}
+              component="img"
+              image={p.img}
+              alt={p.name}
+            />
+            <CardContent
+              sx={{
+                display: { sm: "flex" },
+                flexDirection: { sm: "column" },
+                justifyContent: { sm: "center" },
+                width: { sm: "70%", md: "75%", lg: "70%" },
+              }}
+            >
+              <Typography
+                variant="h4"
+                sx={{ height: { sm: "25%" } }}
+                noWrap={true}
+              >
+                {p.name}
+              </Typography>
+              <Typography variant="h5" sx={{ height: { sm: "25%" } }}>
+                Cantidad: {p.quantity}
+              </Typography>
+              <Typography variant="h5" sx={{ height: { sm: "25%" } }}>
+                ${p.price * p.quantity}
+              </Typography>
+              <Button
+                sx={{
+                  height: { sm: "25%" },
+                  width: { xs: "100%", sm: "50px" },
+                  fontSize: { xs: "35px", sm: "20px" },
+                }}
+                variant="text"
+                className="remove-btn"
+                onClick={() => removeById(p.id)}
+              >
+                🗑️
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </Grid>
 
       {cart.length > 0 ? (
-        <>
-          <button onClick={clearCart}>Vaciar Carrito</button>
-          <button>
-            <Link to={"/checkout"}>Finalizar la compra.</Link>
-          </button>
-        </>
+        <Grid
+          className="cartview-btn-container"
+          container
+          xs={12}
+          sm={12}
+          lg={5}
+          sx={{
+            height: { lg: "70vh" },
+            display: "flex",
+            flexDirection: { xs: "column" },
+            alignContent: { xs: "center" },
+            position: { lg: "fixed" },
+            marginLeft: { lg: "55%" },
+          }}
+        >
+          <Typography
+            variant="h5"
+            alignSelf="center"
+            className="cart-total-amount"
+          >
+            TOTAL: $ {total}
+          </Typography>
+          <Button
+            className="cart-end-btn"
+            variant="outlined"
+            onClick={clearCart}
+            sx={{
+              width: { xs: "90%", lg: "50%" },
+              height: { xs: "60px" },
+              fontSize: { xs: "20px" },
+            }}
+          >
+            Vaciar Carrito 🗑️
+          </Button>
+          <Button
+            className="cart-end-btn"
+            variant="outlined"
+            sx={{
+              width: { xs: "90%", lg: "50%" },
+              height: { xs: "60px" },
+              fontSize: { xs: "20px" },
+            }}
+          >
+            <Link to={"/checkout"} className="checkout-link">
+              Finalizar la compra
+              <IoBagCheckOutline color="white" />
+            </Link>
+          </Button>
+        </Grid>
       ) : (
-        <button className="cart-view-btn" disabled>
-          Finalizar la compra.
-        </button>
+        <Grid
+          container
+          className="cart-not-found"
+          xs={12}
+          sm={12}
+          lg={6}
+          sx={{
+            minHeight: { xs: "70vh", lg: "70vh" },
+            display: "flex",
+            flexDirection: { xs: "column" },
+            alignItems: { xs: "center", lg: "center" },
+            justifyContent: { lg: "center" },
+            position: { lg: "fixed" },
+            marginLeft: { lg: "0" },
+          }}
+        >
+          <Typography variant="h5">
+            Parece que aún no has atrapado nada!
+          </Typography>
+          <Button variant="outlined" className="cart-end-btn">
+            <Link to={"/"}>Ver Productos.</Link>
+          </Button>
+        </Grid>
       )}
-    </div>
+    </Grid>
   );
 };
