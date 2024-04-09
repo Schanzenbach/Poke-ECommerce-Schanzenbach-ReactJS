@@ -37,20 +37,20 @@ export const Navbar = () => {
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           <Link to="/category/plushies">PLUSHIES</Link>
           <Link to="/category/plushies">
-            <img src="public\plush.svg" alt="" className="bar-icons" />
+            <img src="/plush.svg" alt="" className="bar-icons" />
           </Link>
         </Grid>
 
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           <Link to="/category/clothes">ROPA</Link>
           <Link to="/category/clothes">
-            <img src="public\clothes.svg" alt="" className="bar-icons" />
+            <img src="/clothes.svg" alt="" className="bar-icons" />
           </Link>
         </Grid>
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           <Link to="/category/home">HOGAR</Link>
           <Link to="/category/home">
-            <img src="public\home.svg" alt="" className="bar-icons" />
+            <img src="/home.svg" alt="" className="bar-icons" />
           </Link>
         </Grid>
       </Grid>
