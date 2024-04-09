@@ -27,6 +27,7 @@ export const CartView = () => {
       <Grid item xs={12} lg={6}>
         {cart.map((p) => (
           <Card
+            item
             className="cart-p-card"
             key={p.id}
             sx={{
@@ -38,7 +39,7 @@ export const CartView = () => {
               width: { xs: "90%", sm: "90%", lg: "100%" },
               display: "flex",
               flexDirection: { xs: "column", sm: "row", lg: "row" },
-              height: { sm: " 25vh", lg: "27.5vh" },
+              minHeight: { sm: " 25vh", lg: "27.5vh" },
             }}
           >
             <Link
@@ -46,7 +47,7 @@ export const CartView = () => {
               className="img-link"
               sx={{
                 borderRadius: "1rem",
-                width: { sm: "30%", md: "25%", lg: "30%" },
+                width: { sm: "30%", md: "30%", lg: "30%" },
               }}
             >
               <CardMedia

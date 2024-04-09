@@ -1,35 +1,87 @@
-export const Checkout = ({ submitForm, captureUser, orderId }) => {
+import "./Checkout.css";
+import { Grid, Button, Box, Typography } from "@mui/material";
+import { FaRegCopy } from "react-icons/fa";
+
+export const Checkout = ({ submitForm, captureUser, orderId, copy }) => {
   return (
     <>
       {orderId ? (
-        <div>
-          <h1>Gracias por tu compra! tu ID de seguimiento es: {orderId}</h1>
-          <h4>No te olvides de guardarla</h4>
-        </div>
+        <Grid container className="checkout-body-cont">
+          <Grid
+            item
+            className="form-box"
+            sx={{
+              display: { xs: "flex" },
+              flexDirection: { xs: "column" },
+              alignItems: { xs: "center", md: "start" },
+              width: { xs: "100%", md: "50%" },
+              height: "70%",
+              padding: "5px",
+            }}
+          >
+            <Typography variant="h5">
+              ¡Gracias por tu compra! tu ID de seguimiento es:
+              <br />
+              {orderId}
+            </Typography>
+            <Button className="end-buy-btn" onClick={copy}>
+              <FaRegCopy size={"2rem"} />
+            </Button>
+            <Typography variant="h6">No te olvides guardarlo!</Typography>
+          </Grid>
+        </Grid>
       ) : (
-        <div>
-          <form onSubmit={submitForm}>
-            <input
-              type="text"
-              placeholder="Nombre"
-              name="name"
-              onChange={captureUser}
-            />
-            <input
-              type="text"
-              placeholder="E-mail"
-              name="email"
-              onChange={captureUser}
-            />
-            <input
-              type="int"
-              placeholder="Teléfono"
-              name="phone"
-              onChange={captureUser}
-            />
-            <button type="submit">COMPRAR</button>
-          </form>
-        </div>
+        <Grid
+          container
+          className="checkout-body-cont"
+          sx={{
+            display: { xs: "flex" },
+            flexDirection: { xs: "column" },
+          }}
+        >
+          <Grid item>
+            <Box
+              className="form-box"
+              component="form"
+              onSubmit={submitForm}
+              sx={{
+                display: { xs: "flex" },
+                flexDirection: { xs: "column" },
+                alignItems: { xs: "center", md: "start" },
+                width: { xs: "100%", md: "50%" },
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Nombre Completo"
+                name="name"
+                onChange={captureUser}
+              />
+              <input
+                type="text"
+                placeholder="E-mail"
+                name="email"
+                onChange={captureUser}
+              />
+              <input
+                type="int"
+                placeholder="Teléfono"
+                name="phone"
+                onChange={captureUser}
+              />
+              <Button
+                className="end-buy-btn"
+                type="submit"
+                sx={{
+                  alignSelf: { xs: "center", md: "end" },
+                  width: { xs: "40%", md: "25%" },
+                }}
+              >
+                COMPRAR
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
       )}
     </>
   );

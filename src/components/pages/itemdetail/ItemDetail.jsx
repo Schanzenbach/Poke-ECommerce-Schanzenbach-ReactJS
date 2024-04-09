@@ -16,6 +16,7 @@ export const ItemDetail = ({ item, addToCart, initialValue }) => {
           }}
         >
           <Grid
+            item
             xs={12}
             sm={12}
             md={6}

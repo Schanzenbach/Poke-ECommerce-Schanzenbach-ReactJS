@@ -6,7 +6,7 @@ export const Footer = () => {
     <div className="footer-container">
       <div>Alan Schanzenbach 2024 | All Rights Reserved ©</div>
       <div>
-        <FaInstagram />
+        <FaInstagram size={"2rem"} />
       </div>
     </div>
   );

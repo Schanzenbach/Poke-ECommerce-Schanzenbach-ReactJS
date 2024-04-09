@@ -31,12 +31,16 @@ export const CheckoutContainer = () => {
     });
     clearCart();
   };
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(orderId);
+  };
   return (
     <>
       <Checkout
         captureUser={captureUserInfo}
         submitForm={submitForm}
         orderId={orderId}
+        copy={copyToClipboard}
       />
     </>
   );

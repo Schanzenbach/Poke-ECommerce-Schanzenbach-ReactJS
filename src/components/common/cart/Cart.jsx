@@ -10,7 +10,7 @@ export const Cart = () => {
   return (
     <div className="cart-container">
       <Link to={"/cart"}>
-        <TiShoppingCart size="6vh" />
+        <TiShoppingCart size="3rem" />
       </Link>
       <p>{totalItemsInCart}</p>
     </div>
