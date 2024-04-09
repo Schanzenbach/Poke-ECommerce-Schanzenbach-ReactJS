@@ -13,6 +13,7 @@ export const Navbar = () => {
         <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
           <Link to="/">
             <img
+              id="logo"
               className="logo animate__animated animate__fadeInTopLeft animate__slow"
               src={logo}
               alt="Logo Pokeball"
@@ -35,13 +36,22 @@ export const Navbar = () => {
       <Grid className="navbar-bottom-half" container>
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           <Link to="/category/plushies">PLUSHIES</Link>
+          <Link to="/category/plushies">
+            <img src="public\plush.svg" alt="" className="bar-icons" />
+          </Link>
         </Grid>
 
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           <Link to="/category/clothes">ROPA</Link>
+          <Link to="/category/clothes">
+            <img src="public\clothes.svg" alt="" className="bar-icons" />
+          </Link>
         </Grid>
         <Grid className="navbar-boxes" item xs={4} sm={4} md={4} lg={4}>
           <Link to="/category/home">HOGAR</Link>
+          <Link to="/category/home">
+            <img src="public\home.svg" alt="" className="bar-icons" />
+          </Link>
         </Grid>
       </Grid>
     </nav>

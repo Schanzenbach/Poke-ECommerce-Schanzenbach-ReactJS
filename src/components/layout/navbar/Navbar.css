@@ -20,9 +20,14 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  flex-direction: column !important;
   background-color: var(--firstia-dark);
 }
 
-.logo {
+.bar-icons {
+  height: 1.7rem;
+}
+
+#logo {
   width: 60px;
 }
