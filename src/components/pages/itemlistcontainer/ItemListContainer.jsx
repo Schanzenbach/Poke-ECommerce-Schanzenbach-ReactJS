@@ -7,7 +7,7 @@ import { FilterInputContext } from "../../../context/FilterInputContext.jsx";
 
 export const ItemListContainer = () => {
   const { category } = useParams();
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { productsName } = useContext(FilterInputContext);
   useEffect(() => {
@@ -61,10 +61,10 @@ export const ItemListContainer = () => {
 
   return (
     <>
-      {isLoading ? (
-        <img src="/gif/loading.gif" alt="Cargando..." />
-      ) : (
+      {items !== null ? (
         <ItemList items={items} />
+      ) : (
+        <img src="/gif/loading.gif" alt="Cargando..." />
       )}
     </>
   );

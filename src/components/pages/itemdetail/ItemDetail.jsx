@@ -1,7 +1,7 @@
 import { CardMedia, Grid, Card, CardContent, Typography } from "@mui/material";
 import "./ItemDetail.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CounterContainer } from "../../common/counter/CounterContainer";
+import { Carousel } from "../../common/carousel/Carousel";
 
 export const ItemDetail = ({ item, addToCart, initialValue }) => {
   return (
@@ -20,18 +20,19 @@ export const ItemDetail = ({ item, addToCart, initialValue }) => {
             xs={12}
             sm={12}
             md={6}
-            sx={{ marginLeft: { md: "25%", lg: "0" } }}
             lg={6}
+            sx={{ marginLeft: { md: "25%", lg: "0" } }}
           >
-            <CardMedia
+            {/* <CardMedia
               className="detail-img"
               component="img"
               sx={{
                 height: { xs: "320", sm: "400", md: "400" },
               }}
-              image={item.img}
-              alt={item.name}
-            />
+              image={item.img[0]}
+              alt={item.name} */}
+            <Carousel item={item} />
+            {/* /> */}
           </Grid>
           <CardContent className="card-detail">
             <Typography gutterBottom variant="h5" component="div">

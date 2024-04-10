@@ -7,6 +7,7 @@ import { CartView } from "./components/pages/cartview/CartView";
 import { CheckoutContainer } from "./components/pages/checkout/CheckoutContainer";
 import { CartContextProvider } from "./context/CartContext";
 import { FilterInputContextProvider } from "./context/FilterInputContext";
+import { CarouselContainer } from "./components/common/carousel/CarouselContainer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<ItemListContainer />} />
+
                 <Route
                   path="/category/:category"
                   element={<ItemListContainer />}

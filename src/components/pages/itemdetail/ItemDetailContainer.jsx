@@ -9,7 +9,7 @@ export const ItemDetailContainer = () => {
   //El useParams toma la id que le mando por url al navegador, la cual es mandada ahí por el React Router
   const { id } = useParams();
 
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const { onAddToCart, getQuantityById } = useContext(CartContext);
@@ -40,14 +40,14 @@ export const ItemDetailContainer = () => {
   //string con un + lo hago int YA NO MÁS PORQUE AHORA ES UN STRING XD
   return (
     <>
-      {isLoading ? (
-        <img src="/gif/loadingPBall.gif" alt="Cargando..." />
-      ) : (
+      {item && isLoading == false ? (
         <ItemDetail
           item={item}
           addToCart={addToCart}
           initialValue={alreadyQuantityInCart}
         />
+      ) : (
+        <img src="/gif/loadingPBall.gif" alt="Cargando..." />
       )}
     </>
   );

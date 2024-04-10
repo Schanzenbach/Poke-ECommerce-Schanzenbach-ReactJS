@@ -56,7 +56,7 @@ export const CartView = () => {
                   width: { sm: "100%" },
                 }}
                 component="img"
-                image={p.img}
+                image={p.img[0]}
                 alt={p.name}
               />
             </Link>
