@@ -1,0 +1,48 @@
+@import url("../../palette/palette.css");
+
+.login-body-cont {
+  min-height: 75vh;
+  background-color: var(--firstia);
+  padding: 10px;
+  background-image: url("https://res.cloudinary.com/dxt6aalyt/image/upload/v1709689944/PokeProject/n89bjmzxlvkbxdcvkmgd.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
+  background-position-y: bottom;
+  background-position-x: right;
+}
+
+.form-box {
+  background: linear-gradient(
+    to right bottom,
+    var(--firstia-light-transparent),
+    var(--firstia-transparent),
+    var(--firstia-dark-transparent)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--thirdrema-light);
+  border-left: 1px solid var(--thirdrema-light);
+  border-radius: 1rem !important;
+  color: var(--thirdrema) !important;
+}
+
+.login-input {
+  width: 80%;
+  height: 3.5rem;
+  margin: 10px 5px;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  outline: none;
+}
+.login-input:focus {
+  border: 2px solid var(--secondil);
+}
+.end-buy-btn {
+  color: var(--thirdrema) !important;
+  border: 2px solid var(--secondil-dark) !important;
+  background-color: var(--firstia-dark) !important;
+  margin-bottom: 10px !important;
+  margin: 10px 5px !important;
+  height: 3rem;
+}

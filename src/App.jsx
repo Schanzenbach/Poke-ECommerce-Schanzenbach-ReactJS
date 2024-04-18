@@ -7,7 +7,8 @@ import { CartView } from "./components/pages/cartview/CartView";
 import { CheckoutContainer } from "./components/pages/checkout/CheckoutContainer";
 import { CartContextProvider } from "./context/CartContext";
 import { FilterInputContextProvider } from "./context/FilterInputContext";
-import { CarouselContainer } from "./components/common/carousel/CarouselContainer";
+import { LoginContainer } from "./components/pages/login/LoginContainer";
+import { LoginContextProvider } from "./context/LoginContext";
 
 function App() {
   return (
@@ -15,20 +16,26 @@ function App() {
       <BrowserRouter>
         <CartContextProvider>
           <FilterInputContextProvider>
-            <Routes>
-              <Route element={<Layout />}>
-                <Route path="/" element={<ItemListContainer />} />
+            <LoginContextProvider>
+              <Routes>
+                <Route element={<Layout />}>
+                  <Route path="/" element={<ItemListContainer />} />
 
-                <Route
-                  path="/category/:category"
-                  element={<ItemListContainer />}
-                />
-                <Route path="/item/:id" element={<ItemDetailContainer />} />
-                <Route path="/cart" element={<CartView />} />
-                <Route path="/checkout" element={<CheckoutContainer />} />
-                <Route path="/*" element={<h1>404 página no encontrada</h1>} />
-              </Route>
-            </Routes>
+                  <Route
+                    path="/category/:category"
+                    element={<ItemListContainer />}
+                  />
+                  <Route path="/item/:id" element={<ItemDetailContainer />} />
+                  <Route path="/cart" element={<CartView />} />
+                  <Route path="/checkout" element={<CheckoutContainer />} />
+                  <Route path="/login" element={<LoginContainer />} />
+                  <Route
+                    path="/*"
+                    element={<h1>404 página no encontrada</h1>}
+                  />
+                </Route>
+              </Routes>
+            </LoginContextProvider>
           </FilterInputContextProvider>
         </CartContextProvider>
       </BrowserRouter>

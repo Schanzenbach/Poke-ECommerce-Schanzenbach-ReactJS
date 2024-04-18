@@ -64,7 +64,9 @@ export const ItemListContainer = () => {
       {items !== null ? (
         <ItemList items={items} />
       ) : (
+        <div className="caja">
         <img src="/gif/loading.gif" alt="Cargando..." />
+        </div>
       )}
     </>
   );

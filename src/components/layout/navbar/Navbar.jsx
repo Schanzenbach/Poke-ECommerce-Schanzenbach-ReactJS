@@ -30,7 +30,7 @@ export const Navbar = () => {
         </Grid>
 
         <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
-          LOGIN
+        <Link to="/login">LOGIN</Link>
         </Grid>
       </Grid>
       <Grid className="navbar-bottom-half" container>
