@@ -3,17 +3,19 @@ import { Checkout } from "./Checkout";
 import { CartContext } from "../../../context/CartContext";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { dataBase } from "../../../firebaseConfig";
+import { LoginContext } from "../../../context/LoginContext";
 
 export const CheckoutContainer = () => {
   const { cart, totalCartPrice, clearCart } = useContext(CartContext);
+  const { isLogged } = useContext(LoginContext);
   const [userInfo, setUserInfo] = useState({
     name: "",
-    email: "",
+    cardNumber: "",
     phone: "",
   });
   const [orderId, setOrderId] = useState(null);
   const captureUserInfo = (event) => {
-    setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+    setUserInfo({ ...userInfo, [event.target.name]: event.target.value, email: isLogged.email });
   };
   const submitForm = (event) => {
     event.preventDefault();

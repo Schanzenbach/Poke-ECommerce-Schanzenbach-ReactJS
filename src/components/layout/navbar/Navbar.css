@@ -1,7 +1,7 @@
 @import "../../palette/palette.css";
 
 .navbar {
-  height: 20vh;
+  min-height: 20vh;
   width: 100%;
   background-color: var(--firstia-dark);
   margin: 0;

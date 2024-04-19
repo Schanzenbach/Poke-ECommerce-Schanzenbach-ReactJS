@@ -58,9 +58,9 @@ export const Checkout = ({ submitForm, captureUser, orderId, copy }) => {
                 onChange={captureUser}
               />
               <input
-                type="text"
-                placeholder="E-mail"
-                name="email"
+                type="int"
+                placeholder="Número de tarjeta"
+                name="cardNumber"
                 onChange={captureUser}
               />
               <input

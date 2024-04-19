@@ -5,12 +5,24 @@ import "./Navbar.css";
 import "animate.css";
 import { Link } from "react-router-dom";
 import { FilterInputContainer } from "../../common/filterinput/FilterInputContainer";
+import { useContext } from "react";
+import { LoginContext } from "../../../context/LoginContext";
 
 export const Navbar = () => {
+  const {isLogged} = useContext(LoginContext);
+  
+  let username;
+
+  if (isLogged){
+    let indexOfAt = isLogged.email.indexOf('@');
+    username = isLogged.email.substring(0, indexOfAt);
+  }
+
+
   return (
-    <nav className="navbar">
+    <Grid container className="navbar">
       <Grid className="navbar-top-half" container>
-        <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
+        <Grid className="navbar-boxes" item xs={6} sm={3} md={3} lg={3}>
           <Link to="/">
             <img
               id="logo"
@@ -21,16 +33,16 @@ export const Navbar = () => {
           </Link>
         </Grid>
 
-        <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
+        <Grid className="navbar-boxes" item xs={6} sm={3} md={3} lg={3}>
           <FilterInputContainer />
         </Grid>
 
-        <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
+        <Grid className="navbar-boxes" item xs={6} sm={3} md={3} lg={3}>
           <Cart />
         </Grid>
 
-        <Grid className="navbar-boxes" item xs={3} sm={3} md={3} lg={3}>
-        <Link to="/login">LOGIN</Link>
+        <Grid className="navbar-boxes" item xs={6} sm={3} md={3} lg={3}>
+        <Link to="/login">{isLogged ? username : "LOGIN"}</Link>
         </Grid>
       </Grid>
       <Grid className="navbar-bottom-half" container>
@@ -54,6 +66,6 @@ export const Navbar = () => {
           </Link>
         </Grid>
       </Grid>
-    </nav>
+    </Grid>
   );
 };

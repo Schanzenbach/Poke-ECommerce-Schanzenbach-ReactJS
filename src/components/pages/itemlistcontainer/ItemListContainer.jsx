@@ -65,7 +65,7 @@ export const ItemListContainer = () => {
         <ItemList items={items} />
       ) : (
         <div className="caja">
-        <img src="/gif/loading.gif" alt="Cargando..." />
+        <img className="loading" src="/gif/loading.gif" alt="Cargando..." />
         </div>
       )}
     </>
