@@ -172,7 +172,7 @@ export const CartView = () => {
             Parece que aún no has atrapado nada!
           </Typography>
           <Button variant="outlined" className="cart-end-btn">
-            <Link to={"/"}>Ver Productos.</Link>
+            <Link to={"/"}>CONTINUAR EXPLORANDO</Link>
           </Button>
         </Grid>
       )}

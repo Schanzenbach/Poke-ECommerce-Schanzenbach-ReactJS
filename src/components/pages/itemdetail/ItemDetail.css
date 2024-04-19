@@ -34,3 +34,19 @@
 .price-stock {
   color: var(--firstia-dark);
 }
+.caja {
+  background-image: url("/img/tremendo-background.png");
+  background-repeat: no-repeat;
+  background-size: 65%;
+  background-attachment: fixed;
+  background-position-y: 80%;
+  background-position-x: right;
+  background-color: var(--firstia);
+  min-height: 75vh;
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

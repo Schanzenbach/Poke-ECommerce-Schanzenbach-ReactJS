@@ -65,11 +65,11 @@ export const Login = ({
               >
                 {loginOrSignin ? "Registrarse" : "Iniciar Sesión"}
               </Button>
-              <Typography>
+              <Typography variant="h6" margin={"10px"}>
                 O QUIZÁ PREFIERAS{" "}
-                <button id="botondecambio" onClick={toggleLoginType}>
+                <Button className="toggle-login" id="botondecambio" onClick={toggleLoginType}>
                   {loginOrSignin ? "Iniciar Sesión" : "Registrarse"}
-                </button>
+                </Button>
                 ?
               </Typography>
             </Box>

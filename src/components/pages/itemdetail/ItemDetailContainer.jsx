@@ -48,7 +48,7 @@ export const ItemDetailContainer = () => {
         />
       ) : (
         <div className="caja">
-        <img src="/gif/loadingPBall.gif" alt="Cargando..." />
+          <img src="/gif/loadingPBall.gif" alt="Cargando..." />
         </div>
       )}
     </>
