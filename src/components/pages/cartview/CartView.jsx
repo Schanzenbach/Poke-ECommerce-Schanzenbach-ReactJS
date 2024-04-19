@@ -12,11 +12,14 @@ import {
   CardMedia,
   Grid,
 } from "@mui/material";
+import { LoginContext } from "../../../context/LoginContext";
 
 export const CartView = () => {
   const { cart, clearCart, removeById, totalCartPrice } =
     useContext(CartContext);
   const total = totalCartPrice().toFixed(2);
+
+  const { isLogged } = useContext(LoginContext);
 
   return (
     <Grid
@@ -142,7 +145,7 @@ export const CartView = () => {
               fontSize: { xs: "20px" },
             }}
           >
-            <Link to={"/checkout"} className="checkout-link">
+            <Link to={isLogged ? "/checkout" : "/login"} className="checkout-link">
               Finalizar la compra
               <IoBagCheckOutline color="white" />
             </Link>
@@ -169,7 +172,7 @@ export const CartView = () => {
             Parece que aún no has atrapado nada!
           </Typography>
           <Button variant="outlined" className="cart-end-btn">
-            <Link to={"/"}>Ver Productos.</Link>
+            <Link to={"/"}>CONTINUAR EXPLORANDO</Link>
           </Button>
         </Grid>
       )}

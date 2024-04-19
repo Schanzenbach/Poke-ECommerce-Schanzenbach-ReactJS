@@ -1,4 +1,4 @@
-import { Grid, Box, Button, TextField } from "@mui/material";
+import { Grid, Box, Button, Typography} from "@mui/material";
 import "./Login.css";
 
 export const Login = ({
@@ -65,13 +65,13 @@ export const Login = ({
               >
                 {loginOrSignin ? "Registrarse" : "Iniciar Sesión"}
               </Button>
-              <h4>
+              <Typography variant="h6" margin={"10px"}>
                 O QUIZÁ PREFIERAS{" "}
-                <button id="botondecambio" onClick={toggleLoginType}>
+                <Button className="toggle-login" id="botondecambio" onClick={toggleLoginType}>
                   {loginOrSignin ? "Iniciar Sesión" : "Registrarse"}
-                </button>
+                </Button>
                 ?
-              </h4>
+              </Typography>
             </Box>
           </Grid>
         </Grid>

@@ -47,7 +47,9 @@ export const ItemDetailContainer = () => {
           initialValue={alreadyQuantityInCart}
         />
       ) : (
-        <img src="/gif/loadingPBall.gif" alt="Cargando..." />
+        <div className="caja">
+          <img src="/gif/loadingPBall.gif" alt="Cargando..." />
+        </div>
       )}
     </>
   );
