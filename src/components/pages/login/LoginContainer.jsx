@@ -1,6 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import { Login } from "./Login";
-import { authFb } from "../../../firebaseConfig"; /* trae el initialiaze con la config de firebase y el getAuth */
+import {
+  authFb,
+  dataBase,
+} from "../../../firebaseConfig"; /* trae el initialiaze con la config de firebase y el getAuth */
+import {collection, } from "firebase/firestore"
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -51,13 +55,14 @@ export const LoginContainer = () => {
   };
 
   return (
-    <Login
-      loginOrSignin={loginOrSignin}
-      toggleLoginType={toggleLoginType}
-      captureUserInfo={captureUserInfo}
-      submit={onSubmit}
-      logout={logout}
-      isLogged= {isLogged}
-    />
+
+        <Login
+          loginOrSignin={loginOrSignin}
+          toggleLoginType={toggleLoginType}
+          captureUserInfo={captureUserInfo}
+          submit={onSubmit}
+          logout={logout}
+          isLogged={isLogged}
+        />
   );
 };

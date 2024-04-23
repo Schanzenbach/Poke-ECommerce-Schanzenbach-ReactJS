@@ -9,6 +9,7 @@ import { CartContextProvider } from "./context/CartContext";
 import { FilterInputContextProvider } from "./context/FilterInputContext";
 import { LoginContainer } from "./components/pages/login/LoginContainer";
 import { LoginContextProvider } from "./context/LoginContext";
+import { SessionHistoryContainer } from "./components/pages/sessionhistory/SessionHistoryContainer";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                   <Route path="/cart" element={<CartView />} />
                   <Route path="/checkout" element={<CheckoutContainer />} />
                   <Route path="/login" element={<LoginContainer />} />
+                  <Route path="/history" element={<SessionHistoryContainer/>} />
                   <Route
                     path="/*"
                     element={<h1>404 página no encontrada</h1>}

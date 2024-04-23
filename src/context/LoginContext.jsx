@@ -9,11 +9,15 @@ export const LoginContextProvider = ({ children }) => {
 las páginas visibles sólo para usuarios, sino, no.  */
   const [isLogged, setIsLogged] = useState(null);
 
+  /*Variables para sacar el email de la persona loggeada */
+  const [loggedEmail, setLoggedEmail] = useState();
+
   /* función que mediante un método de firebase me dice si el usuario está logged or nah, se le pasan 2 arg, getAuth(app); 
   que lo tengo importado como authFb, y un callback al que le voy a pasar como parámetro el usuario cuyo estado quiero chekear*/
   onAuthStateChanged(authFb, (firebaseUser) => {
     if (firebaseUser) {
       setIsLogged(firebaseUser);
+      setLoggedEmail(firebaseUser.email);
     } else {
       setIsLogged(null);
     }
@@ -24,6 +28,6 @@ las páginas visibles sólo para usuarios, sino, no.  */
     signOut(authFb);
   };
 
-  const data = { isLogged, logout };
+  const data = { isLogged, loggedEmail, logout };
   return <LoginContext.Provider value={data}>{children}</LoginContext.Provider>;
 };
