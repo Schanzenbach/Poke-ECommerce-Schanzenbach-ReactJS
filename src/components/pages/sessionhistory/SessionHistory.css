@@ -1,0 +1,9 @@
+@import "../../palette/palette.css";
+.order-btn {
+    color: var(--thirdrema) !important;
+    border: 2px solid var(--secondil-dark) !important;
+    background-color: var(--firstia-dark) !important;
+    margin-bottom: 10px !important;
+    margin: 10px 5px !important;
+    height: 3rem;
+  }

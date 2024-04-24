@@ -1,5 +1,6 @@
 import { Grid, Box, Button, Typography} from "@mui/material";
 import "./Login.css";
+import { SessionHistoryContainer } from "../sessionhistory/SessionHistoryContainer";
 
 export const Login = ({
   loginOrSignin,
@@ -20,6 +21,7 @@ export const Login = ({
             flexDirection: { xs: "column" },
           }}
         >
+          <SessionHistoryContainer/>
           <button onClick={logout}>LOGOUT</button>
         </Grid>
       ) : (
