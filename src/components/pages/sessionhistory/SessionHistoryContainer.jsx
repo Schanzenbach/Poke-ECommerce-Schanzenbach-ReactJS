@@ -13,7 +13,6 @@ export const SessionHistoryContainer = () => {
 
   const [allOrders, setAllOrders] = useState([]);
   const [userOrders, setUserOrders] = useState([]);
-  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,53 +25,49 @@ export const SessionHistoryContainer = () => {
       let ordersCollection = collection(dataBase, "orders");
       /*collection no es asíncrono así que se ejecuta primero que todo y trae la colección
       orders de la base de datos. Existe enseguida. */
-      getDocs(ordersCollection)
-        .then((response) => {
-          /*7mo getDocs es asíncrono pero ya empieza ahora, ya que generalmente tardaría
+      getDocs(ordersCollection).then((response) => {
+        /*7mo getDocs es asíncrono pero ya empieza ahora, ya que generalmente tardaría
           más que el loggedEmail en ser traído, pero como tiene el condicional, sigue
           en orden.
            */
-          let ordersArray = response.docs.map((e) => {
-            return { ...e.data(), id: e.id };
-          });
-          /* 8vo se setean las variables de estado, esto no les da el valor enseguida,
+        let ordersArray = response.docs.map((e) => {
+          return { ...e.data(), id: e.id };
+        });
+        /* 8vo se setean las variables de estado, esto no les da el valor enseguida,
           primero se re renderiza el componente por tercera vez.
          */
-          setAllOrders(ordersArray);
-          setCurrentEmail(loggedEmail);
-          
-        });
-      }
-    }, [loggedEmail]);
-    
-    useEffect(()=>{
-      /*3ero Inicia el segundo useEffect, la condición no se cumple porque allOrders se
+        setAllOrders(ordersArray);
+        setCurrentEmail(loggedEmail);
+      });
+    }
+  }, [loggedEmail]);
+
+  useEffect(() => {
+    /*3ero Inicia el segundo useEffect, la condición no se cumple porque allOrders se
       setea al terminar el primer useEffect por lo tanto no tiene el array aún.
       10mo inicia por segunda vez el segundo useEffect, ahora el condicional se cumple
       por lo que se setea userOrders y Loading. 
       Problema, esto no significa que si hace 
       otra compra, no se verá reflejada porque no la trae en el primer useEffect?
       */
-      if (allOrders.length > 0 && currentEmail) {
-        let filteredArray = allOrders.filter((e)=> {
-          return e.buyer.email == currentEmail;
-        });
-        let itemsArray = filteredArray.map((e)=> {
-          return { items: e.items, id: e.id };
-          /*itemsArray es un array con objetos, cada objeto tiene 2 propiedades, id e items
+    if (allOrders.length > 0 && currentEmail) {
+      let filteredArray = allOrders.filter((e) => {
+        return e.buyer.email == currentEmail;
+      });
+      let itemsArray = filteredArray.map((e) => {
+        return { items: e.items, total: e.total, id: e.id };
+        /*itemsArray es un array con objetos, cada objeto tiene 2 propiedades, id e items
           items es un array que dentro tiene objetos productos. 
           */
-        })
-        /*11vo se setean estas variables de estado, por lo que se vuelve a renderizar el código
+      });
+      /*11vo se setean estas variables de estado, por lo que se vuelve a renderizar el código
         sin entrar a este useEffect. */
-        setUserOrders(itemsArray);
-        // setItems(itemsArray);
-        setLoading(false);
-        /*Estas variables aún no tienen valor hasta que se re renderiza.  */
-      }
-
-    }, [allOrders]);
-    /*1er render. Se ejecuta primero todo lo que está fuera de los useEffect en el cuerpo
+      setUserOrders(itemsArray);
+      setLoading(false);
+      /*Estas variables aún no tienen valor hasta que se re renderiza.  */
+    }
+  }, [allOrders]);
+  /*1er render. Se ejecuta primero todo lo que está fuera de los useEffect en el cuerpo
     del componente. Esto se vuelve a ejecutar con cada renderizado. Aún no está definida 
     ninguna variable de estado más que por el valor inicial dado en el useState.
     5to Segundo render. Se renderiza de nuevo el componente por el cambio de loggedEmail
@@ -84,6 +79,24 @@ export const SessionHistoryContainer = () => {
     12voSe renderiza por cuarta vez el componente, ahora ya existen todas las variables de estado
     y loading es false. 
     */
-    //console.log(currentEmail, allOrders, userOrders, loading, "afuera del todo");
-  return <>{loading ? <div className="caja">cargando...</div> : <SessionHistory userOrders={userOrders} />}</>;
+  const [isExpanded, setIsExpanded] = useState(null);
+  const toggleExpanded = (orderId) =>{
+    if (isExpanded===orderId) {
+      setIsExpanded(null);
+    } else {
+      setIsExpanded(orderId);
+    };
+  };
+  return (
+    <>
+      {loading ? (
+        <div>cargando...</div>
+      ) : (
+        <SessionHistory 
+        userOrders={userOrders}
+        isExpanded={isExpanded}
+        toggleExpanded={toggleExpanded} />
+      )}
+    </>
+  );
 };
