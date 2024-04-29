@@ -12,6 +12,7 @@
   background-position-x: right;
 }
 
+
 .form-box {
   background: linear-gradient(
     to right bottom,
@@ -38,7 +39,7 @@
 .login-input:focus {
   border: 2px solid var(--secondil);
 }
-.end-buy-btn, .toggle-login {
+.end-buy-btn, .toggle-login, .logout-btn {
   color: var(--thirdrema) !important;
   border: 2px solid var(--secondil-dark) !important;
   background-color: var(--firstia-dark) !important;

@@ -20,10 +20,12 @@ export const Login = ({
           sx={{
             display: { xs: "flex" },
             flexDirection: { xs: "column" },
+            alignItems: {xs:"center"},
+            justifyContent: {xs: "center"},
           }}
         >
           <SessionHistoryContainer/>
-          <button onClick={logout}>LOGOUT</button>
+          <Button className="logout-btn" onClick={logout}>LOGOUT</Button>
         </Grid>
       ) : (
         <Grid

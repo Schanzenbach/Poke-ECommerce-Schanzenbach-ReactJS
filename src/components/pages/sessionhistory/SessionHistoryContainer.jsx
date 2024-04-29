@@ -23,8 +23,8 @@ export const SessionHistoryContainer = () => {
     */
     if (loggedEmail) {
       let ordersCollection = collection(dataBase, "orders");
-      /*collection no es asíncrono así que se ejecuta primero que todo y trae la colección
-      orders de la base de datos. Existe enseguida. */
+      /*collection no es asíncrono dice chatgpt así que se ejecuta primero que todo y trae 
+      la colección orders de la base de datos. Existe enseguida. */
       getDocs(ordersCollection).then((response) => {
         /*7mo getDocs es asíncrono pero ya empieza ahora, ya que generalmente tardaría
           más que el loggedEmail en ser traído, pero como tiene el condicional, sigue
@@ -55,7 +55,7 @@ export const SessionHistoryContainer = () => {
         return e.buyer.email == currentEmail;
       });
       let itemsArray = filteredArray.map((e) => {
-        return { items: e.items, total: e.total, id: e.id };
+        return { items: e.items, total: e.total, id: e.id, date: e.date };
         /*itemsArray es un array con objetos, cada objeto tiene 2 propiedades, id e items
           items es un array que dentro tiene objetos productos. 
           */

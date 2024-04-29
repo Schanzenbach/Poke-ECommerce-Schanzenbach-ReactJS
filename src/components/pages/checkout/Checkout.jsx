@@ -20,7 +20,7 @@ export const Checkout = ({ submitForm, captureUser, orderId, copy }) => {
             }}
           >
             <Typography variant="h5">
-              ¡Gracias por tu compra! tu ID de seguimiento es:
+              ¡Gracias por tu compra! tu código de seguimiento es:
               <br />
               {orderId}
             </Typography>

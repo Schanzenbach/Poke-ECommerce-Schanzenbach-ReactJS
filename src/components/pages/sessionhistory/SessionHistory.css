@@ -1,5 +1,19 @@
 @import "../../palette/palette.css";
 
+.history-card{
+  background: linear-gradient(
+    to right bottom,
+    var(--firstia-light-transparent),
+    var(--firstia-transparent),
+    var(--firstia-dark-transparent)
+  ) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--thirdrema-light);
+  border-left: 1px solid var(--thirdrema-light);
+  border-radius: 1rem !important;
+  color: var(--thirdrema) !important;
+}
 .order-btn {
     color: var(--thirdrema) !important;
     border: 2px solid var(--secondil-dark) !important;
