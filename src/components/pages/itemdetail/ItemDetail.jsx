@@ -23,14 +23,6 @@ export const ItemDetail = ({ item, addToCart, initialValue }) => {
             lg={6}
             sx={{ marginLeft: { md: "25%", lg: "0" } }}
           >
-            {/* <CardMedia
-              className="detail-img"
-              component="img"
-              sx={{
-                height: { xs: "320", sm: "400", md: "400" },
-              }}
-              image={item.img[0]}
-              alt={item.name} */}
             <Carousel item={item} />
             {/* /> */}
           </Grid>

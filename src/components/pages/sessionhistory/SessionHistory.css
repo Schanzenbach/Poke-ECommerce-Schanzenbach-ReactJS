@@ -1,6 +1,6 @@
 @import "../../palette/palette.css";
 
-.history-card{
+.history-card, .history-text{
   background: linear-gradient(
     to right bottom,
     var(--firstia-light-transparent),
@@ -21,4 +21,6 @@
     margin-bottom: 10px !important;
     margin: 10px 5px !important;
     height: 3rem;
+    width: 20rem;
   }
+

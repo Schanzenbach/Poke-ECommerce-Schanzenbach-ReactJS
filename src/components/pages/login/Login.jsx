@@ -1,4 +1,4 @@
-import { Grid, Box, Button, Typography} from "@mui/material";
+import { Grid, Box, Button, Typography } from "@mui/material";
 
 import "./Login.css";
 import { SessionHistoryContainer } from "../sessionhistory/SessionHistoryContainer";
@@ -20,12 +20,23 @@ export const Login = ({
           sx={{
             display: { xs: "flex" },
             flexDirection: { xs: "column" },
-            alignItems: {xs:"center"},
-            justifyContent: {xs: "center"},
+            alignItems: { xs: "center" },
+            justifyContent: { xs: "center" },
           }}
         >
-          <SessionHistoryContainer/>
-          <Button className="logout-btn" onClick={logout}>LOGOUT</Button>
+          <SessionHistoryContainer />
+          <Button
+            className="logout-btn"
+            onClick={logout}
+            sx={{
+              position: { sm: "sticky" },
+              bottom: { sm: "5%" },
+              right: { sm: "2%" },
+              alignSelf: {sm: "end"}
+            }}
+          >
+            LOGOUT
+          </Button>
         </Grid>
       ) : (
         <Grid
@@ -72,7 +83,11 @@ export const Login = ({
               </Button>
               <Typography variant="h6" margin={"10px"}>
                 O QUIZÁ PREFIERAS{" "}
-                <Button className="toggle-login" id="botondecambio" onClick={toggleLoginType}>
+                <Button
+                  className="toggle-login"
+                  id="botondecambio"
+                  onClick={toggleLoginType}
+                >
                   {loginOrSignin ? "Iniciar Sesión" : "Registrarse"}
                 </Button>
                 ?

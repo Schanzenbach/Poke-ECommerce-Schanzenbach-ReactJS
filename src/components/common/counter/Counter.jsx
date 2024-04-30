@@ -1,7 +1,7 @@
 import "./Counter.css";
 import { Button } from "@mui/material";
 
-export const Counter = ({ addBtn, amount, substractBtn, addToCart }) => {
+export const Counter = ({stock, addBtn, amount, substractBtn, addToCart }) => {
   //Este componente recibe varios argumentos, vienen todos de la lógica de este componente
   //La lógica está en el container.
   return (
@@ -31,6 +31,7 @@ export const Counter = ({ addBtn, amount, substractBtn, addToCart }) => {
           fullWidth={true}
           variant="outlined"
           className="cart-btn"
+          disabled={stock== 0? true : false}
         >
           Agregar al carrito
         </Button>

@@ -17,15 +17,21 @@ export const CheckoutContainer = () => {
   const captureUserInfo = (event) => {
     setUserInfo({ ...userInfo, [event.target.name]: event.target.value, email: isLogged.email });
   };
-  //variables to get date.
-  let dateOfBuy = new Date();
-  let month = dateOfBuy.getMonth() +1;
-  let day = dateOfBuy.getDate();
-  let year = dateOfBuy.getFullYear();
+  //function to get date.
+  const getDate = ()=>{
+    let months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    let month = months[new Date().getMonth()];
+    let day = new Date().getDate();
+    let year = new Date().getFullYear();
+    const dateOfPurchase = `${day} de ${month} del ${year} `;
+    return dateOfPurchase;
+  }
+
   const submitForm = (event) => {
     event.preventDefault();
     let order = {
-      date: `${day}/${month}/${year}`,
+      date: getDate(),
       buyer: userInfo,
       items: cart,
       total: totalCartPrice(),

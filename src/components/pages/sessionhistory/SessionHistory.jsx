@@ -11,7 +11,7 @@ import "./SessionHistory.css";
 import { MdOutlineMenuOpen } from "react-icons/md";
 
 export const SessionHistory = ({ userOrders, isExpanded, toggleExpanded }) => {
-  console.log(userOrders);
+
   return (
     <>
       {userOrders.map((order) => {
@@ -34,6 +34,23 @@ export const SessionHistory = ({ userOrders, isExpanded, toggleExpanded }) => {
             >
               {order.date} <MdOutlineMenuOpen size="1.5rem" />
             </Button>
+            <Grid className="history-text" sx={{ 
+              width: { xs: "90%", sm: "75%" },
+              height: {xs: "20vh", sm: "10vh"},
+              display: "flex",
+              flexDirection: {xs: "column"},
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "2px",
+              marginBottom: "5px",
+              }}>
+            <Typography variant="h6" >
+              Total: ${order.total}
+            </Typography>
+            <Typography variant="h6" >
+              Código: {order.id}
+            </Typography>
+            </Grid>
 
             {isExpanded === order.id && (
               <Grid
@@ -111,9 +128,7 @@ export const SessionHistory = ({ userOrders, isExpanded, toggleExpanded }) => {
               </Grid>
             )}
 
-            <Typography variant="h6" sx={{ maxWidth: { xs: "75%" } }}>
-              Total: ${order.total}
-            </Typography>
+
           </Grid>
         );
       })}

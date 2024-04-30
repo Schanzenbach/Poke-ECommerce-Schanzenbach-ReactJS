@@ -19,6 +19,7 @@ export const CounterContainer = ({ stock, addToCart, initialValue = 1 }) => {
   return (
     <>
       <Counter
+        stock= {stock}
         addBtn={addOne}
         substractBtn={subOne}
         amount={amount}
