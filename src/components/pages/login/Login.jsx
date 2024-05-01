@@ -6,8 +6,9 @@ import { SessionHistoryContainer } from "../sessionhistory/SessionHistoryContain
 export const Login = ({
   loginOrSignin,
   toggleLoginType,
-  captureUserInfo,
-  submit,
+  handleChange,
+  handleSubmit,
+  errors,
   logout,
   isLogged,
 }) => {
@@ -51,7 +52,7 @@ export const Login = ({
             <Box
               className="form-box"
               component="form"
-              onSubmit={submit}
+              onSubmit={handleSubmit}
               sx={{
                 display: { xs: "flex" },
                 flexDirection: { xs: "column" },
@@ -63,14 +64,16 @@ export const Login = ({
                 type="text"
                 placeholder="E-mail"
                 name="email"
-                onChange={captureUserInfo}
+                onChange={handleChange}
               />
+              <p>{errors ? errors.email : " "}</p>             
               <input
                 type="password"
                 placeholder="Contraseña"
                 name="password"
-                onChange={captureUserInfo}
+                onChange={handleChange}
               />
+              <p>{errors ? errors.password : " "}</p>
               <Button
                 className="end-buy-btn"
                 type="submit"

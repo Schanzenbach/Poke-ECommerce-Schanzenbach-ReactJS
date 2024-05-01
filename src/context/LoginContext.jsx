@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+/*trae el método  onauthstatechanged, y los demás del mismo lado que sale el getAuth*/
+
 import { authFb } from "../firebaseConfig";
 
 export const LoginContext = createContext();

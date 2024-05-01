@@ -1,16 +1,16 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Login } from "./Login";
 import {
   authFb,
   dataBase,
 } from "../../../firebaseConfig"; /* trae el initialiaze con la config de firebase y el getAuth */
-import {collection, } from "firebase/firestore"
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { LoginContext } from "../../../context/LoginContext";
-/*trae el método  onauthstatechanged, y los demás del mismo lado que sale el getAuth*/
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export const LoginContainer = () => {
   //traigo contexto del login pa saber si está logged alguien o no, junto a la fn logout.
@@ -19,48 +19,54 @@ export const LoginContainer = () => {
   /*Variable conectada a la función toggleLoginType*/
   const [loginOrSignin, setLoginOrSignin] = useState(false);
 
-  /* Variables de estado que contienen el objeto usuario con su mail y password */
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-
   /* función que cambia un booleano para que el botón cambie por iniciar sesión o registrarse */
   const toggleLoginType = (event) => {
     event.preventDefault();
     setLoginOrSignin(!loginOrSignin);
   };
 
-  /* función que captura la información del usuario de los inputs y luego los guarda como propiedades de objeto
- en la variable de estado userInfo. Importante que los names de los input sean igual que el nombre de la propiedad
- de objeto que quiero crear. */
-  const captureUserInfo = (event) => {
-    setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
-  };
+  /* Voy a agregar Formik y Yup para hacer el formulario de registro.  */
 
-  /* si la variable de estado es true para registrarse entonces uso el método de firebase para crear usuario
-  sino, uso el para loggear.  */
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (loginOrSignin) {
-      await createUserWithEmailAndPassword(
-        authFb,
-        userInfo.email,
-        userInfo.password
-      );
-    } else {
-      await signInWithEmailAndPassword(
-        authFb,
-        userInfo.email,
-        userInfo.password
-      );
-    }
-  };
-
+  const {handleSubmit, handleChange, errors} = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async (data)=>{
+      console.log(data)
+      /*
+      si la variable de estado es true para registrarse entonces uso el método de firebase para crear usuario
+      sino, uso el para loggear. 
+      */
+      if (loginOrSignin) {
+        await createUserWithEmailAndPassword(
+          authFb,
+          data.email,
+          data.password
+        );
+      } else {
+        await signInWithEmailAndPassword(
+          authFb,
+          data.email,
+          data.password
+        );
+      }
+    },
+    validateOnChange: false,
+    validationSchema: Yup.object({
+      email: Yup.string().email("Debe ser un e-mail válido.").required("Campo requerido."),
+      password: Yup.string().required("Campo requerido.").min(6, "Mínimo 6 caracteres.")
+      .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/, "Debe contener una mayúscula, una minúscula y un número.")
+    }),
+  });
   return (
 
         <Login
           loginOrSignin={loginOrSignin}
           toggleLoginType={toggleLoginType}
-          captureUserInfo={captureUserInfo}
-          submit={onSubmit}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          errors={errors}
           logout={logout}
           isLogged={isLogged}
         />
